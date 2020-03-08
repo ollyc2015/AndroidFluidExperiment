@@ -5,6 +5,7 @@ const val CHOSEN_WORD = "ChosenWord"
 const val BACKGROUND_ID = "BackgroundID"
 const val TIME_SELECTED = "timeSelected"
 var USER_CANCELLED_FLUID_ACTIVITY = false
+var TOUCH_DETECTED = false
 
 const val AMBITIOUS = "Ambitious"
 const val ESTEEMED = "Esteemed"

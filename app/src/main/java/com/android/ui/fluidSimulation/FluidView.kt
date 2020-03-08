@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.content.res.ResourcesCompat
+import com.android.common.TOUCH_DETECTED
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.egl.EGLContext
@@ -94,22 +95,27 @@ internal class FluidView : GLSurfaceView {
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
-        val drawable = ResourcesCompat.getDrawable(resources, com.android.ui.fluidSimulation.R.drawable.loading_complete, null)
-
-
         when (event.actionMasked) {
+
             MotionEvent.ACTION_MOVE ->                 // Ensure that handling of the touch event is run on the GL thread
                 // rather than Android UI thread. This ensures we can modify
                 // rendering state without locking.  This event triggers a plane
                 // fit.
             {
+                TOUCH_DETECTED = true
+
                 var i = 0
                 while (i < event.pointerCount) {
+
                     FluidLib.onTouchChange(event.getPointerId(i), event.getX(i), event.getY(i), event.getPressure(i), event.getSize(i))
                     i++
                 }
             }
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
+
+
+                TOUCH_DETECTED = true
+
                 var i = 0
                 while (i < event.pointerCount) {
                     FluidLib.onTouchDown(event.getPointerId(i), event.getX(i), event.getY(i), event.getPressure(i), event.getSize(i))
@@ -117,18 +123,24 @@ internal class FluidView : GLSurfaceView {
                 }
             }
             MotionEvent.ACTION_UP -> {
+
+                TOUCH_DETECTED = false
+
                 var i = 0
                 while (i < event.pointerCount) {
-                    Log.i("ACTION_UP info ", event.toString())
                     FluidLib.onTouchUp(event.getPointerId(i), event.getX(i), event.getY(i), event.getPressure(i), event.getSize(i))
                     i++
                 }
             }
             MotionEvent.ACTION_POINTER_UP -> {
+
+                TOUCH_DETECTED = false
+
                 val pointerIndex = event.actionIndex
                 val pointerId = event.getPointerId(pointerIndex)
                 var i = 0
                 while (i < event.pointerCount) {
+
                     FluidLib.onTouchUp(pointerId, event.getX(i), event.getY(i), event.getPressure(i), event.getSize(i))
                     i++
                 }

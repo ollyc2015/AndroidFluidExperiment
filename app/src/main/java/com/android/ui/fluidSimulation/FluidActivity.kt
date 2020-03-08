@@ -6,11 +6,18 @@ import android.animation.ObjectAnimator.ofFloat
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import android.view.View
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentActivity
+import com.android.common.TOUCH_DETECTED
 import com.android.common.USER_CANCELLED_FLUID_ACTIVITY
 import com.android.ui.loadSettings.LoadSettingsView
 import java.lang.Math.cos
@@ -24,7 +31,8 @@ class FluidActivity : FragmentActivity() {
     private var x: Double = 0.1
     private var y: Double = 0.1
     val delayTime = 100L
-    var handler: Handler = Handler()
+    var ringAnimationHandler: Handler = Handler()
+    var hideRing = false
 
     val mediaPlayer = LoadSettingsView.getMediaPlayer()
     val settings = LoadSettingsView.getSettingsResponse()
@@ -49,6 +57,7 @@ class FluidActivity : FragmentActivity() {
         layoutParams.topMargin = y.toInt()
 
         this.addContentView(fluidRing, layoutParams)
+        // fluidRing?.visibility = View.GONE
 
         tutorialRingAnimation()
 
@@ -72,20 +81,70 @@ class FluidActivity : FragmentActivity() {
     @SuppressLint("ObjectAnimatorBinding")
     fun tutorialRingAnimation() {
 
-        handler.postDelayed(object : Runnable {
-            override fun run() {
-                time()
-                val animX = ofFloat(fluidRing, "x", x.toFloat() - 150)
-                val animY = ofFloat(fluidRing, "y", y.toFloat() - 150)
-                val animSetXY = AnimatorSet()
-                animSetXY.playTogether(animX, animY)
-                animSetXY.duration = 100
-                animSetXY.interpolator = LinearInterpolator ()
-                animSetXY.start()
+        ringAnimationHandler.postDelayed(object : Runnable {
 
-                handler.postDelayed(this, delayTime)
+            override fun run() {
+
+                if (!TOUCH_DETECTED) {
+
+                    if (fluidRing?.visibility == View.INVISIBLE) {
+                        fluidRing?.let { fadeInAndShowImage(it) }
+                    }
+
+
+                    time()
+                    val animX = ofFloat(fluidRing, "x", x.toFloat() - 150)
+                    val animY = ofFloat(fluidRing, "y", y.toFloat() - 150)
+                    val animSetXY = AnimatorSet()
+                    animSetXY.playTogether(animX, animY)
+                    animSetXY.duration = 100
+                    animSetXY.interpolator = LinearInterpolator()
+                    animSetXY.start()
+
+                    ringAnimationHandler.postDelayed(this, delayTime)
+
+                } else {
+
+                    if (fluidRing?.visibility == View.VISIBLE) {
+                        fadeOutAndHideImage(fluidRing!!)
+                    }
+
+                    ringAnimationHandler.postDelayed(this, delayTime)
+                }
             }
+
         }, delayTime)
+    }
+
+
+    private fun fadeOutAndHideImage(img: ImageView) {
+        val fadeOut: Animation = AlphaAnimation(0f, 1f)
+        fadeOut.interpolator = AccelerateInterpolator()
+        fadeOut.duration = 1000
+        fadeOut.setAnimationListener(object : AnimationListener {
+            override fun onAnimationEnd(animation: Animation) {
+                img.visibility = View.INVISIBLE
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+            override fun onAnimationStart(animation: Animation) {}
+        })
+        img.startAnimation(fadeOut)
+    }
+
+    private fun fadeInAndShowImage(img: ImageView) {
+        val fadeIn: Animation = AlphaAnimation(1f, 0f)
+        fadeIn.interpolator = AccelerateInterpolator()
+        fadeIn.duration = 1000
+        fadeIn.setAnimationListener(object : AnimationListener {
+            override fun onAnimationEnd(animation: Animation) {
+                img.visibility = View.VISIBLE
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+            override fun onAnimationStart(animation: Animation) {}
+        })
+        img.startAnimation(fadeIn)
     }
 
 
