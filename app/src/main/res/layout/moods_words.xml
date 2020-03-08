@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fade_image_background" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/how_would_you_like_to_feel"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:translationY="-100dp" />
+
+    <TextView
+        android:id="@+id/txtWords"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:translationY="-50dp" />
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/textPicker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:np_width="300dp"
+        android:layout_centerInParent="true"
+        app:np_orientation="horizontal"
+        app:np_dividerColor="@color/fully_transparent"
+        app:np_selectedTextColor="#FFFFFF"
+        app:np_selectedTextSize="25dp"
+        app:np_textColor="#FFFFFF"
+        app:np_textSize="15dp"
+        app:np_wheelItemCount="3" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:translationY="-25dp" />
+
+</RelativeLayout>

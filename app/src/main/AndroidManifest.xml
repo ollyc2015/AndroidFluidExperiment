@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:aandroid="http://schemas.android.com/apk/distribution"
+    package="com.android.ui.fluidSimulation">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-feature android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+    <application
+        android:name="com.android.dependency_inject.SampleApplication"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/moods_activity"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name="com.android.ui.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.android.ui.fluidSimulation.FluidActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            tools:ignore="LockedOrientationActivity" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loading_status"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.ui.loadSettings.LoadSettingsView">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/content_description_mood_background"
+        android:src="@drawable/fade_image_background" />
+
+
+    <!--
+    <ImageView
+        android:id="@+id/image_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/content_description_mood_background"
+        android:src="@drawable/headphones" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@drawable/circular" />
+        -->
+    <RelativeLayout
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/splash_layout" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/headphones"
+            android:layout_centerInParent="true"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:indeterminateDrawable = "@drawable/circular"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/splash_layout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="53dp"
+        android:gravity="center|top"
+        android:text="@string/prepare_text"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnStartFluid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:translationY="-25dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/background_image1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/fade_image_background"
+        android:contentDescription="@string/how_much_time_do_you_have_selection_screen" />
+
+    <TextView
+        android:id="@+id/txtChosenWord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center|top"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="@string/how_much_time_do_you_have"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:translationY="-100dp" />
+
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:paddingTop="80dp"
+        android:text="@string/minutes"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:translationY="25dp" />
+
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/timePicker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:np_width="150dp"
+        android:layout_centerInParent="true"
+        app:np_orientation="horizontal"
+        app:np_dividerColor="@color/fully_transparent"
+        app:np_selectedTextColor="#FFFFFF"
+        app:np_selectedTextSize="120dp"
+        app:np_textColor="#FFFFFF"
+        app:np_textSize="70dp"
+        app:np_wheelItemCount="3"
+        app:np_wrapSelectorWheel= "false" />
+
+    <Button
+        android:id="@+id/btnTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/button"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:translationY="-25dp" />
+
+</RelativeLayout>

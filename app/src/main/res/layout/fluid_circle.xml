@@ -1,0 +1,15 @@
+<RelativeLayout android:id="@+id/relLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <ImageView
+            android:id="@+id/fluid_circle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/loading_complete"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+

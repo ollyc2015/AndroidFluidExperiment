@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent">
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/moods_hero" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:background="@android:color/black"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="344dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="@string/moods_text"
+            android:textAlignment="center"
+            android:textColor="#FCFCFC"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/btnImmerse"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="46dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#FFFFFF"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.20"
+            android:text="@string/immerse_yourself"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+    </RelativeLayout>
+
+</LinearLayout>

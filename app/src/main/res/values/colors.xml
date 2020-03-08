@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Lush Official Palette -->
+
+    <!-- Primary -->
+
+    <color name="black">#000000</color>
+    <color name="grey_5">#333333</color>
+    <color name="grey_4">#8f8f8f</color>
+    <color name="grey_3">#cecece</color>
+    <color name="grey_2">#eaeaea</color>
+    <color name="grey_1">#fafbfc</color>
+
+    <!-- Secondary -->
+
+    <color name="green">#00a44c</color>
+    <color name="red">#d0021b</color>
+    <color name="orange">#ff9800</color>
+    <color name="purple">#665cd0</color>
+
+    <color name="transparent">#80FFFFFF</color>
+    <color name="fully_transparent">#00FFFFFF</color>
+
+</resources>
