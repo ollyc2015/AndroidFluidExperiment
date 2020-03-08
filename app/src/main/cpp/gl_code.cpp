@@ -31,6 +31,7 @@
 
 
 void *fluid;
+bool userHasTouchedScreen = false;
 
 
 static double now_ms(void) {
@@ -40,7 +41,6 @@ static double now_ms(void) {
     return 1000.0 * res.tv_sec + (double) res.tv_nsec / 1e6;
 
 }
-
 
 
 extern "C" JNIEXPORT void JNICALL
@@ -65,22 +65,37 @@ extern "C" JNIEXPORT void JNICALL
 Java_com_android_ui_fluidSimulation_FluidLib_step(JNIEnv *env, jobject obj) {
 
     double t = now_ms();
-    double t_s = t / 1000;
 
-    double x = sin(t_s) * 500 + 500; // x
-    double y = cos(t_s) * 500 + 1000; // y
+    if (!userHasTouchedScreen) {
 
-    fluidOnPointerDown(
-            fluid,
-            -1,
-            TOUCH,
-            x, // x
-            y, // y
-            0, 0, // button flags
-            1.0, // pressure
-            0.019607844, // radius
-            0, 0, 0 // unused
-    );
+        double t_s = t / 1000;
+
+        double x = sin(t_s) * 500 + 500; // x
+        double y = cos(t_s) * 500 + 1000; // y
+
+        fluidOnPointerDown(
+                fluid,
+                -1,
+                TOUCH,
+                x, // x
+                y, // y
+                0, 0, // button flags
+                1.0, // pressure
+                0.019607844, // radius
+                0, 0, 0 // unused
+        );
+    } else {
+        fluidOnPointerUp(
+                fluid,
+                -1,
+                TOUCH,
+                0, 0, // x, y
+                0, 0, // button flags
+                0, // pressure
+                0, // radius
+                0, 0, 0 // unused
+        );
+    }
 
     fluidOnFrame(fluid, t);
 
@@ -93,6 +108,8 @@ Java_com_android_ui_fluidSimulation_FluidLib_onTouchDown(JNIEnv * /*env*/, jobje
                                                          jfloat size) {
 
 //__android_log_write(ANDROID_LOG_ERROR, "Tag", "Touch registered");//Or ANDROID_LOG_INFO, .
+
+    userHasTouchedScreen = true;
 
     fluidOnPointerDown(
             fluid,
@@ -116,6 +133,8 @@ Java_com_android_ui_fluidSimulation_FluidLib_onTouchUp(JNIEnv * /*env*/, jobject
 
 //__android_log_write(ANDROID_LOG_ERROR, "Tag", "Touch registered");//Or ANDROID_LOG_INFO, .
 
+    userHasTouchedScreen = false;
+
     fluidOnPointerUp(
             fluid,
             id,
@@ -136,6 +155,8 @@ Java_com_android_ui_fluidSimulation_FluidLib_onTouchChange(JNIEnv * /*env*/, job
                                                            jfloat size) {
 
 //__android_log_write(ANDROID_LOG_ERROR, "Tag", "Touch registered");//Or ANDROID_LOG_INFO, .
+
+    userHasTouchedScreen = true;
 
 
     fluidOnPointerChange(
