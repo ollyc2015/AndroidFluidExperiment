@@ -2,6 +2,7 @@ package com.android.ui.loadSettings
 
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,8 @@ class LoadSettingsView : Fragment() {
     }
 
     private fun init() {
+
+        Log.d("olly", "i am called")
 
         backgroundID = arguments?.getInt(BACKGROUND_ID, 0)!!
         chosenWord = arguments?.getString(CHOSEN_WORD)!!
@@ -131,7 +134,7 @@ class LoadSettingsView : Fragment() {
         fragobj.arguments = bundle
 
         val fr = fragmentManager?.beginTransaction()
-        fr?.replace(R.id.container, fragobj)
+        fr?.add(R.id.container, fragobj) //add to backstack so that network call isn't made when user presses the back button (call it when they return to this activity)
         fr?.addToBackStack(null) // adds fragment to backstack
         fr?.commit()
     }

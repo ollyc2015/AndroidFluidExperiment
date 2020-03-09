@@ -25,13 +25,15 @@
 #include <time.h>
 #include <jni.h>
 #include <jni.h>
+#include <utility>
+#include <memory>
 
 #define  LOG_TAG    "fluid_sim"
 #define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 
 
-void *fluid;
 bool userHasTouchedScreen = false;
+void *fluid;
 
 
 static double now_ms(void) {
@@ -46,7 +48,7 @@ static double now_ms(void) {
 extern "C" JNIEXPORT void JNICALL
 Java_com_android_ui_fluidSimulation_FluidLib_init(JNIEnv *env, jobject obj, jint width,
                                                   jint height) {
-    // LOGI("fluid int = %d", fluid);
+
     fluid = fluidCreate((int) width, (int) height);
 
 }
@@ -55,7 +57,9 @@ Java_com_android_ui_fluidSimulation_FluidLib_init(JNIEnv *env, jobject obj, jint
 extern "C" JNIEXPORT void JNICALL
 Java_com_android_ui_fluidSimulation_FluidLib_fluidDestroy(JNIEnv *env, jobject clazz) {
 
-    fluidDestroy(fluid);
+
+    //fluidDestroy(fluid);
+    delete fluid;
 
 }
 
@@ -121,8 +125,6 @@ Java_com_android_ui_fluidSimulation_FluidLib_onTouchDown(JNIEnv * /*env*/, jobje
             size, // radius
             0, 0, 0 // unused
     );
-
-
 }
 
 

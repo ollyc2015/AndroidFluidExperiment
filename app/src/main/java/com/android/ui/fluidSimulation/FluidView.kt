@@ -5,9 +5,6 @@ import android.content.Context
 import android.opengl.GLSurfaceView
 import android.util.Log
 import android.view.MotionEvent
-import android.widget.Button
-import android.widget.LinearLayout
-import androidx.core.content.res.ResourcesCompat
 import com.android.common.TOUCH_DETECTED
 import javax.microedition.khronos.egl.EGL10
 import javax.microedition.khronos.egl.EGLConfig
@@ -56,6 +53,7 @@ internal class FluidView : GLSurfaceView {
 
     private class ContextFactory : EGLContextFactory {
         override fun createContext(egl: EGL10, display: EGLDisplay, eglConfig: EGLConfig): EGLContext {
+
             Log.w(TAG, "creating OpenGL ES 2.0 context")
             checkEglError("Before eglCreateContext", egl)
             val attrib_list = intArrayOf(EGL_CONTEXT_CLIENT_VERSION, 2, EGL10.EGL_NONE)
@@ -80,15 +78,12 @@ internal class FluidView : GLSurfaceView {
         }
 
         override fun onSurfaceChanged(gl: GL10, width: Int, height: Int) {
-
             FluidLib.init(width, height)
-
         }
 
         override fun onSurfaceCreated(gl: GL10, config: EGLConfig) {
             // Do nothing.
-
-
+            //FluidLib.fluidDestroy()
         }
     }
 

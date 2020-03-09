@@ -17,6 +17,7 @@ class LoadSettingsPresenter(application: Application) : AndroidViewModel(applica
     private var response: MutableLiveData<SettingsResponse>? = null
     private var liveDataMediaPlayer: MutableLiveData<MediaPlayer>? = null
     private var myMediaPlayer: MediaPlayer? = null
+    private var moodRequestedOnError: String? = null
 
 
     fun getSettingsResponse(): MutableLiveData<SettingsResponse>? {
@@ -39,13 +40,22 @@ class LoadSettingsPresenter(application: Application) : AndroidViewModel(applica
     @SuppressLint("CheckResult")
     fun loadingBar(moodRequested: String) {
 
+        moodRequestedOnError = moodRequested
 
         settingsRepo.loadMusicRXJava(moodRequested)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result ->  response?.value = result},
-                        { error -> println("There was an error: " + error.localizedMessage) })
+                        //Below will need to be handled in the event of SSL handshake error
+                        //Possibly add an interceptor and call again or call method again on error
+                        //For now, I have done the latter due to ease.
+                        { error ->
+                            run {
+                                println("There was an error: " + error.localizedMessage)
+                                loadingBar(moodRequestedOnError.toString())
+                            }
+                        })
 
     }
 

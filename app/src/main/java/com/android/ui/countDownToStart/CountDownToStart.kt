@@ -36,6 +36,8 @@ class CountDownToStart : Fragment() {
         init()
     }
 
+
+
     override fun onStart() {
         super.onStart()
         if(USER_CANCELLED_FLUID_ACTIVITY){

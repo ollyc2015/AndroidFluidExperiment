@@ -6,7 +6,6 @@ import android.animation.ObjectAnimator.ofFloat
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.AlphaAnimation
@@ -91,7 +90,6 @@ class FluidActivity : FragmentActivity() {
                         fluidRing?.let { fadeInAndShowImage(it) }
                     }
 
-
                     time()
                     val animX = ofFloat(fluidRing, "x", x.toFloat() - 150)
                     val animY = ofFloat(fluidRing, "y", y.toFloat() - 150)
@@ -151,7 +149,9 @@ class FluidActivity : FragmentActivity() {
     override fun onPause() {
         super.onPause()
         mView!!.onPause()
-        mediaPlayer?.pause();
+        mediaPlayer?.pause()
+        FluidLib.fluidDestroy()
+
     }
 
     override fun onResume() {
