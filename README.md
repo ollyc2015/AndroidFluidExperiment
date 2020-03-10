@@ -19,8 +19,7 @@ Getting Started
 
 Demo Video
 -----------
-Coming soon
-<!--![Gif to follow](screenshot.png)
+![Alt Text](http://oliverbcurtis.co.uk/github/moods_gif.gif)
 
 Support
 -------
