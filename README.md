@@ -19,7 +19,7 @@ Getting Started
 
 Demo Video
 -----------
-![Alt Text](http://oliverbcurtis.co.uk/github/moods_gif.gif)
+![Alt Text](http://oliverbcurtis.co.uk/github/moods.gif)
 
 Support
 -------
