@@ -19,6 +19,9 @@ Getting Started
 
 Demo Video
 -----------
+
+Apologies for the poor frame rate in the video, the app itself runs very smooth! Also, I should hightlight, relaxing music is also played whilst in the fluid simulation.
+
 ![Alt Text](moods.gif)
 
 Support
