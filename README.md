@@ -4,7 +4,7 @@ Lush Moods helps you to relax by using a variety of interactive fluid simulation
 
 This project uses the [Android Studio CMake plugin](http://tools.android.com/tech-docs/external-c-builds) with C++ support.
 
-After getting the build running, I tasked interns to build the workflow from launching the app to the fluid sim, however, this will need to be redone at some point when I have time, in order to implement a structured workflow. * I have now started to look at this as of 29/02/20. There is a known issue that when you enter the fluid sim, and then press the back button and try to re-enter, this causes a crash. There is an issue with the C++ library that needs looking into...
+The project is a little rough around the edges, but it demos what I set out to do - however, there are likely to be bugs and it is clearly not finished. There is a known issue that when you enter the fluid sim, and then press the back button and try to re-enter, this causes a crash. There is an issue with the C++ library that needs looking into...
 
 Pre-requisites
 --------------
@@ -26,7 +26,7 @@ Apologies for the poor frame rate in the video, the app itself runs very smooth!
 
 Support
 -------
-If you've found an error in these samples, please [file an issue](https://github.com/ollyc2015/LushMoods/issues/new).
+If you've found an error in these samples, please [file an issue](https://github.com/ollyc2015/LushMoods/issues/new). I do accept pull requests in the event you're interested in enhancing this project further for the open source community. 
 
 License
 -------
