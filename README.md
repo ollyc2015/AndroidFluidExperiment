@@ -1,6 +1,6 @@
-Lush Moods Android Fluid Simulation
+Android Fluid Experiment
 =========
-Lush Moods helps you to relax by using a variety of interactive fluid simulations
+The idea is to help you relax by using a variety of interactive fluid simulations
 
 This project uses the [Android Studio CMake plugin](http://tools.android.com/tech-docs/external-c-builds) with C++ support.
 
